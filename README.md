@@ -46,9 +46,11 @@
 ### 2.1 问题的本质：从图像到几何的逆问题
 
 渲染是三维到二维的正向过程：
+
 $$
 \mathrm{3D\ Mesh} \xrightarrow{\text{rasterization}} \mathrm{2D\ Image}
 $$
+
 
 而我们所要做的是求解其逆问题：
 $$
