@@ -166,6 +166,7 @@ $$
 在基础剪影拟合之上，本实验进一步实现了纹理（顶点颜色）的联合优化。这要求使用 `SoftPhongShader` 替代 `SoftSilhouetteShader` 进行 RGB 渲染，并使用 L1 损失（而非 MSE）拟合目标纹理，因为 L1 损失对离群值更鲁棒，能够更好地保留纹理细节。
 
 关键设计是**动态 RGB 权重**：
+
 $$
 \lambda_{\text{rgb}} = \min\left(1.0, \frac{t}{300}\right)
 $$
