@@ -53,6 +53,7 @@ $$
 
 
 而我们所要做的是求解其逆问题：
+
 $$
 \mathrm{2D\ Images} \xrightarrow{\text{gradient descent}} \mathrm{3D\ Mesh}
 $$
@@ -64,6 +65,7 @@ $$
 #### 2.2.1 硬光栅化的梯度消失问题
 
 在传统硬光栅化中，每个像素的覆盖值是一个二值函数：
+
 $$
 I(x, y) = \begin{cases}
 1, & \text{if pixel } (x, y) \text{ is inside triangle} \\
