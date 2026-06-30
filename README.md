@@ -79,8 +79,7 @@ $$
 
 软光栅化的核心思想是：**用连续可微的概率函数替代二值的覆盖判定**。对于每个像素，计算其到三角形各边的符号距离，然后通过 Sigmoid 函数将距离映射为 $(0, 1)$ 区间的概率值：
 
-$$
-A(d) = \operatorname{sigmoid}\left(\frac{d}{\sigma}\right) = \frac{1}{1 + e^{-d/\sigma}}
+$$A(d) = \operatorname{sigmoid}\left(\frac{d}{\sigma}\right) = \frac{1}{1 + e^{-d/\sigma}}
 $$
 
 其中：
