@@ -47,12 +47,12 @@
 
 渲染是三维到二维的正向过程：
 $$
-\text{3D Mesh} \xrightarrow{\text{光栅化}} \text{2D Image}
+\mathrm{3D\ Mesh} \xrightarrow{\text{rasterization}} \mathrm{2D\ Image}
 $$
 
 而我们所要做的是求解其逆问题：
 $$
-\text{2D Images} \xrightarrow{\text{梯度下降}} \text{3D Mesh}
+\mathrm{2D\ Images} \xrightarrow{\text{gradient descent}} \mathrm{3D\ Mesh}
 $$
 
 这一逆问题的核心挑战在于：**渲染过程中的光栅化是一个离散操作**——像素要么落在三角形内部，要么在外部，不存在"部分覆盖"的概念。这种阶跃性质的函数在数学上几乎处处梯度为零，使得传统的基于梯度的优化方法无法直接应用。
@@ -64,8 +64,8 @@ $$
 在传统硬光栅化中，每个像素的覆盖值是一个二值函数：
 $$
 I(x, y) = \begin{cases}
-1 & \text{像素 } (x, y) \text{ 在三角形内} \\
-0 & \text{像素 } (x, y) \text{ 在三角形外}
+1, & \text{if pixel } (x, y) \text{ is inside triangle} \\
+0, & \text{if pixel } (x, y) \text{ is outside triangle}
 \end{cases}
 $$
 
@@ -76,7 +76,7 @@ $$
 软光栅化的核心思想是：**用连续可微的概率函数替代二值的覆盖判定**。对于每个像素，计算其到三角形各边的符号距离，然后通过 Sigmoid 函数将距离映射为 $(0, 1)$ 区间的概率值：
 
 $$
-A(d) = \text{sigmoid}\left(\frac{d}{\sigma}\right) = \frac{1}{1 + e^{-d/\sigma}}
+A(d) = \operatorname{sigmoid}\left(\frac{d}{\sigma}\right) = \frac{1}{1 + e^{-d/\sigma}}
 $$
 
 其中：
